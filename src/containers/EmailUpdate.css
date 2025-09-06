@@ -1,0 +1,238 @@
+/* Enhanced email/password form UI styles */
+.email-card, .password-card {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px 0 rgba(60,60,60,0.13);
+    padding: 36px 32px 28px 32px;
+    max-width: 420px;
+    margin: 32px auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.email-header, .password-header {
+    text-align: center;
+    margin-bottom: 18px;
+}
+.email-icon, .password-icon {
+    font-size: 2.2rem;
+    margin-bottom: 8px;
+    display: block;
+}
+.email-desc, .password-desc {
+    color: #4a5568;
+    font-size: 1.08rem;
+    margin-bottom: 0;
+}
+.email-form, .password-form {
+    width: 100%;
+}
+.email-label, .password-label {
+    font-weight: 700;
+    color: #23272f;
+    margin-bottom: 6px;
+}
+.email-input, .password-input {
+    font-size: 1.1rem;
+    border-radius: 8px;
+    border: 1.5px solid #d1d5db;
+    padding: 10px 14px;
+    background: #f8fafc;
+    color: #23272f;
+    margin-bottom: 8px;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+.email-input:focus, .password-input:focus {
+    border: 1.5px solid #2563eb;
+    outline: none;
+    background: #fff;
+    box-shadow: 0 2px 8px 0 rgba(60,60,60,0.10);
+}
+.email-hint, .password-hint {
+    color: #718096;
+    font-size: 0.98rem;
+}
+.email-btn, .password-btn {
+    width: 100%;
+    margin-top: 10px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-radius: 8px;
+}
+@media (max-width: 600px) {
+    .email-card, .password-card, .confirmation-card {
+        padding: 18px 8px 18px 8px;
+        max-width: 98vw;
+    }
+    .email-header, .password-header, .confirmation-header {
+        font-size: 1.1rem;
+    }
+    .email-btn, .password-btn, .confirmation-btn {
+        font-size: 1rem;
+        padding: 10px 0;
+    }
+}
+/* Enhanced confirmation code UI styles */
+.confirmation-card {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px 0 rgba(60,60,60,0.13);
+    padding: 36px 32px 28px 32px;
+    max-width: 420px;
+    margin: 32px auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.confirmation-header {
+    text-align: center;
+    margin-bottom: 18px;
+}
+.confirmation-icon {
+    font-size: 2.2rem;
+    margin-bottom: 8px;
+    display: block;
+}
+.confirmation-desc {
+    color: #4a5568;
+    font-size: 1.08rem;
+    margin-bottom: 0;
+}
+.confirmation-form {
+    width: 100%;
+}
+.confirmation-label {
+    font-weight: 700;
+    color: #23272f;
+    margin-bottom: 6px;
+}
+.confirmation-input {
+    font-size: 1.1rem;
+    border-radius: 8px;
+    border: 1.5px solid #d1d5db;
+    padding: 10px 14px;
+    background: #f8fafc;
+    color: #23272f;
+    margin-bottom: 8px;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+.confirmation-input:focus {
+    border: 1.5px solid #2563eb;
+    outline: none;
+    background: #fff;
+    box-shadow: 0 2px 8px 0 rgba(60,60,60,0.10);
+}
+.confirmation-hint {
+    color: #718096;
+    font-size: 0.98rem;
+}
+.confirmation-btn {
+    width: 100%;
+    margin-top: 10px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-radius: 8px;
+}
+/* Global styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9fafb;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container styling */
+.EmailChange {
+    padding: 60px 15px;
+    text-align: center;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 60px auto;
+    max-width: 400px;
+    border: 1px solid #e0e4e8;
+}
+
+/* Header styling */
+.EmailChange h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333333;
+    padding-bottom: 25px;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 25px;
+}
+
+/* Form input styling */
+.EmailChange form {
+    margin: 0 auto;
+}
+
+.EmailChange form .form-group {
+    margin-bottom: 20px;
+}
+
+.EmailChange form .form-label {
+    font-weight: bold;
+    font-size: 14px;
+    color: #555555;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.EmailChange form .form-control {
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    height: 40px;
+    padding: 5px 10px;
+    font-size: 14px;
+    color: #333333;
+    box-shadow: none;
+    transition: border-color 0.2s;
+}
+
+.EmailChange form .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.25);
+}
+
+/* Loader button styling */
+.LoaderButton {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.LoaderButton:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.LoaderButton:hover:not(:disabled) {
+    background-color: #0056b3;
+    transform: scale(1.02);
+}
+
+/* Muted text styling */
+.EmailChange form .form-text {
+    font-size: 12px;
+    color: #6c757d;
+}
+
+/* Responsive styling */
+@media all and (max-width: 480px) {
+    .EmailChange {
+        padding: 40px 15px;
+        margin: 30px auto;
+    }
+
+    .EmailChange h2 {
+        font-size: 20px;
+    }
+}
