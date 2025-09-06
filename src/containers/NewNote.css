@@ -2,89 +2,102 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 20px 20px;
+    justify-content: flex-start;
+    padding: 40px 20px;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa, #e4e9f7);
     color: #333;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.NewNote h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #444;
+    text-align: center;
 }
 
 .NewNote form {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 30px 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 600px;
-    margin-top: 10px;
+    max-width: 650px;
+    margin-top: 20px;
+    transition: transform 0.3s ease;
+}
+
+.NewNote form:hover {
+    transform: translateY(-4px);
 }
 
 .NewNote form .form-control {
     font-size: 16px;
-    padding: 12px;
+    padding: 14px;
     border: 1px solid #ced4da;
-    border-radius: 5px;
+    border-radius: 8px;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
     margin-bottom: 20px;
+    background: #fafafa;
 }
 
 .NewNote form .form-control:focus {
     border-color: #6c63ff;
-    box-shadow: 0 0 5px rgba(108, 99, 255, 0.5);
-}
-
-.NewNote form .form-label {
-    font-weight: bold;
-    color: #495057;
-    margin-bottom: 8px;
+    box-shadow: 0 0 8px rgba(108, 99, 255, 0.4);
+    background: #fff;
 }
 
 .NewNote form textarea {
-    height: 290px;
-    font-size: 1.5rem;
-    resize: none;
-    padding: 12px;
-    border-radius: 5px;
-    border: 1px solid #ced4da;
+    height: 280px;
+    font-size: 1.1rem;
+    resize: vertical;
+    border-radius: 8px;
 }
 
-.NewNote form textarea:focus {
-    border-color: #6c63ff;
-    box-shadow: 0 0 5px rgba(108, 99, 255, 0.5);
+.NewNote form .form-label {
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 10px;
+    display: block;
 }
 
-.NewNote form .file-label {
-    font-size: 1rem;
-    color: #495057;
+.NewNote form input[type="file"] {
+    padding: 5px;
+    font-size: 0.95rem;
+    color: #444;
 }
 
 .NewNote .LoaderButton {
     width: 100%;
-    padding: 12px;
-    font-size: 1.2rem;
+    padding: 14px;
+    font-size: 1.1rem;
     font-weight: bold;
-    border-radius: 5px;
-    background: #6c63ff;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #6c63ff, #5146d0);
+    border: none;
     color: #fff;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .NewNote .LoaderButton:hover {
-    background: #5146d0;
+    background: linear-gradient(135deg, #5146d0, #3a2ebf);
     transform: translateY(-2px);
     cursor: pointer;
 }
 
 .NewNote .LoaderButton:disabled {
-    background: #ddd;
+    background: #ccc;
     cursor: not-allowed;
 }
 
-/* Responsive Design */
-@media all and (min-width: 480px) {
-    .NewNote form {
-        padding: 40px 30px;
+/* Responsive */
+@media all and (max-width: 600px) {
+    .NewNote h2 {
+        font-size: 1.5rem;
     }
-
-    .NewNote form .form-label {
-        font-size: 14px;
+    .NewNote form {
+        padding: 25px 20px;
     }
 }

@@ -1,23 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { LinkContainer } from "react-router-bootstrap";
 import { AppContext } from "./libs/contextLib";
+import ThemeProvider, { ThemeContext } from "./libs/ThemeContext"; // ✅ fixed import
 import { Auth } from "aws-amplify";
 import { onError } from "./libs/errorLib";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
-import Routes from "./Routes";
 import Nav from "react-bootstrap/Nav";
+import Routes from "./Routes";
 import "./App.css";
 
-function App() {
+function AppContent() {
   const [isAuthenticated, userHasAuthenticated] = useState(false);
   const [isAuthenticating, setIsAuthenticating] = useState(true);
   const history = useHistory();
+  const location = useLocation();
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   async function handleLogout() {
-    await Auth.signOut();
-    userHasAuthenticated(false);
-    history.push("/");
+    if (window.confirm("Are you sure you want to log out?")) {
+      await Auth.signOut();
+      userHasAuthenticated(false);
+      history.push("/");
+    }
   }
 
   useEffect(() => {
@@ -38,20 +43,24 @@ function App() {
 
   return (
     !isAuthenticating && (
-      <div className="App container py-3">
-        <Navbar collapseOnSelect expand="md">
+      <div className={`App container-fluid px-0 ${theme}`}>
+        {/* Navbar */}
+        <Navbar collapseOnSelect expand="md" fixed="top" className="shadow-sm">
           <LinkContainer to="/">
-            <Navbar.Brand className="font-weight-bold text-muted">
-              NoteApp
+            <Navbar.Brand className="font-weight-bold">
+              📒 NoteBook
             </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle />
-          <Navbar.Collapse className="justify-content-end"  >
-            <Nav activeKey={window.location.pathname}>
+          <Navbar.Collapse className="justify-content-end">
+            <Nav activeKey={location.pathname}>
+              <button onClick={toggleTheme} className="theme-toggle-btn">
+                {theme === "light" ? "🌙" : "☀️"}
+              </button>
               {isAuthenticated ? (
                 <>
                   <LinkContainer to="/emailchange">
-                    <Nav.Link>Change Email?</Nav.Link>
+                    <Nav.Link>Change Email</Nav.Link>
                   </LinkContainer>
                   <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
                 </>
@@ -68,12 +77,27 @@ function App() {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
-        <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
-          <Routes />
-        </AppContext.Provider>
+
+        {/* Main content */}
+        <div className="main-content">
+          <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
+            <Routes />
+          </AppContext.Provider>
+        </div>
+
+        {/* Footer */}
+        <footer>
+          <p>© {new Date().getFullYear()} NoteBook. All rights reserved.</p>
+        </footer>
       </div>
     )
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
+  );
+}

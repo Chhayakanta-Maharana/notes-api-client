@@ -1,59 +1,8 @@
-/* Card utility for note containers */
-.card {
-    background: #fff;
-    border-radius: 18px;
-    box-shadow: 0 8px 32px 0 rgba(60,60,60,0.13);
-    padding: 32px 28px 28px 28px;
-    margin: 24px auto;
-    max-width: 700px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
+/* =========================
+   Utility Styles
+========================= */
 
-/* Input fields */
-input[type="text"],
-input[type="email"],
-input[type="password"],
-textarea {
-    font-family: 'Inter', 'Open Sans', Arial, sans-serif;
-    font-size: 1.08rem;
-    border-radius: 8px;
-    border: 1.5px solid #d1d5db;
-    padding: 10px 14px;
-    margin-bottom: 16px;
-    background: #f8fafc;
-    color: #23272f;
-    transition: border 0.2s, box-shadow 0.2s;
-    box-shadow: 0 1px 2px 0 rgba(60,60,60,0.03);
-}
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus,
-textarea:focus {
-    border: 1.5px solid #2563eb;
-    outline: none;
-    background: #fff;
-    box-shadow: 0 2px 8px 0 rgba(60,60,60,0.10);
-}
-
-/* Headings and text */
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Inter', 'Open Sans', Arial, sans-serif;
-    font-weight: 800;
-    color: #23272f;
-    margin-bottom: 0.5em;
-}
-
-p, label, span, li {
-    font-family: 'Inter', 'Open Sans', Arial, sans-serif;
-    color: #3a3a3a;
-    font-size: 1.08rem;
-    line-height: 1.6;
-}
-
-/* Utility spacing */
+/* Spacing utilities */
 .mt-2 { margin-top: 0.5rem; }
 .mt-3 { margin-top: 1rem; }
 .mt-4 { margin-top: 1.5rem; }
@@ -64,120 +13,246 @@ p, label, span, li {
 .py-3 { padding-top: 1rem; padding-bottom: 1rem; }
 .px-2 { padding-left: 0.5rem; padding-right: 0.5rem; }
 .px-3 { padding-left: 1rem; padding-right: 1rem; }
-.App {
-    font-family: 'Inter', 'Open Sans', Arial, sans-serif;
-    min-height: 100vh;
-    min-width: 100%;
-    display: flex;
-    flex-direction: column;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+
+/* =========================
+   Theme Variables
+========================= */
+
+/* Light Theme */
+:root[data-theme="light"] {
+  --bg: #f5f7fa;
+  --text: #23272f;
+  --card-bg: #fff;
+  --navbar-bg: rgba(255, 255, 255, 0.9);
+  --link-color: #4f8cff;
+  --footer-bg: #f1f3f9;
+  --footer-text: #666;
 }
 
-.navbar {
-    background: rgba(221, 221, 222, 0.737);
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 10px 20px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-evenly;
-    background-color: #9ecbcd;
+/* Dark Theme */
+:root[data-theme="dark"] {
+  --bg: #121212;
+  --text: #f0f0f0;
+  --card-bg: #1e1e1e;
+  --navbar-bg: rgba(30, 30, 30, 0.9);
+  --link-color: #90caf9;
+  --footer-bg: #1e1e1e;
+  --footer-text: #aaa;
 }
-    .navbar {
-        background: #fff !important;
-        box-shadow: 0 2px 12px 0 rgba(60,60,60,0.07);
-        border-radius: 12px;
-        margin: 24px auto 0 auto;
-        width: 95%;
-        max-width: 950px;
-        left: 0;
-        right: 0;
-        position: relative;
-        height: 60px;
-        display: flex;
-        align-items: center;
-        padding: 0 32px;
-        justify-content: space-between;
-    }
+
+/* =========================
+   Global App Styles
+========================= */
+.App {
+  font-family: 'Inter', 'Open Sans', Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Ensure body content doesn't hide behind navbar */
+.main-content {
+  padding-top: 80px; /* Matches navbar height */
+  padding-bottom: 40px; /* Space for footer */
+  min-height: calc(100vh - 120px);
+}
+
+/* =========================
+   Navbar
+========================= */
+.navbar {
+  backdrop-filter: blur(10px);
+  background: var(--navbar-bg) !important;
+  box-shadow: 0 2px 12px rgba(60,60,60,0.07);
+  border-radius: 0 0 12px 12px;
+  width: 95%;
+  max-width: 950px;
+  margin: 0 auto;
+  position: relative;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 32px;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+}
 
 .navbar-brand {
-    font-weight: 800;
-    color: #3a3a3a !important;
-    font-size: 1.5rem;
-    letter-spacing: 1px;
-    margin-left: 0;
-    transition: color 0.3s ease;
+  font-weight: 800;
+  font-size: 1.4rem;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text) !important;
+  transition: color 0.3s ease;
 }
+
 .navbar-brand:hover {
-    color: #4f8cff !important;
-}
-
-.navbar-toggler {
-    border-color: rgba(0, 0, 0, 0.2);
-}
-
-.navbar-toggler-icon {
-    background-color: #e6e6ec;
+  color: var(--link-color) !important;
 }
 
 .navbar .nav-link {
-    font-size: 1rem;
-    color: #495057;
-    transition: color 0.3s ease;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-left: 15px;
+  padding: 6px 14px;
+  border-radius: 6px;
+  color: var(--text) !important;
+  transition: all 0.2s ease;
 }
 
 .navbar .nav-link:hover {
-    color: #c8c7df;
+  background: var(--link-color);
+  color: #fff !important;
 }
 
 .navbar .nav-link.active {
-    color: #c0beda;
-    font-weight: bold;
+  background: #eaf1ff;
+  color: var(--link-color) !important;
+  font-weight: bold;
 }
 
+/* Theme toggle button */
+.theme-toggle-btn {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  margin-right: 15px;
+  cursor: pointer;
+  color: var(--text);
+  transition: color 0.3s ease;
+}
+.theme-toggle-btn:hover {
+  color: var(--link-color);
+}
 
-/* Buttons */
+/* =========================
+   Card / Notes
+========================= */
+.card, .note-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 20px;
+  margin: 20px auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Note Image */
+.note-image {
+  width: 100%;
+  max-height: 250px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+/* Delete button */
+.delete-btn {
+  background: #e53935;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.delete-btn:hover {
+  background: #c62828;
+}
+
+/* =========================
+   Inputs
+========================= */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  font-family: inherit;
+  font-size: 1.08rem;
+  border-radius: 8px;
+  border: 1.5px solid #d1d5db;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+  background: #f8fafc;
+  color: var(--text);
+  transition: border 0.2s, box-shadow 0.2s, background 0.3s;
+  box-shadow: 0 1px 2px rgba(60,60,60,0.03);
+}
+input:focus, textarea:focus {
+  border: 1.5px solid var(--link-color);
+  outline: none;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(60,60,60,0.1);
+}
+
+/* =========================
+   Typography
+========================= */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 0.5em;
+}
+
+p, label, span, li {
+  color: var(--text);
+  font-size: 1.08rem;
+  line-height: 1.6;
+}
+
+/* =========================
+   Buttons
+========================= */
 button {
-    font-family: 'Inter', 'Open Sans', Arial, sans-serif;
-    padding: 10px 18px;
-    border-radius: 8px;
-    background: #4f8cff;
-    color: #fff;
-    border: none;
-    font-weight: 600;
-    font-size: 1rem;
-    box-shadow: 0 2px 8px 0 rgba(60,60,60,0.07);
-    transition: background 0.2s, box-shadow 0.2s;
+  font-family: inherit;
+  padding: 10px 18px;
+  border-radius: 8px;
+  background: var(--link-color);
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px rgba(60,60,60,0.07);
+  transition: background 0.2s, box-shadow 0.2s;
 }
 button:hover {
-    background: #2563eb;
-    box-shadow: 0 4px 16px 0 rgba(60,60,60,0.13);
+  background: #2563eb;
+  box-shadow: 0 4px 16px rgba(60,60,60,0.13);
 }
 
+/* =========================
+   Footer
+========================= */
 footer {
-    margin-top: auto;
-    text-align: center;
-    padding: 15px 0;
-    font-size: 0.9rem;
-    color: #6c757d;
-    background: rgba(0, 0, 0, 0.05);
+  text-align: center;
+  padding: 15px 0;
+  font-size: 0.9rem;
+  color: var(--footer-text);
+  background: var(--footer-bg);
+  margin-top: auto;
+  border-top: 1px solid #e5e7eb;
 }
-    .navbar .nav-link {
-        color: #5a5a5a !important;
-        font-size: 1.08rem;
-        margin-left: 18px;
-        font-weight: 600;
-        letter-spacing: 0.5px;
-        transition: color 0.2s;
-        border-radius: 6px;
-        padding: 6px 16px;
-        background: none;
-    }
-    .navbar .nav-link:hover {
-        color: #fff !important;
-        background: #4f8cff;
-    }
-    .navbar .nav-link.active {
-        color: #4f8cff !important;
-        font-weight: bold;
-        background: #eaf1ff;
-    }
+ 
+.note-card {
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.note-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.note-image {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid #e5e7eb;
+}

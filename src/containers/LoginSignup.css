@@ -1,82 +1,140 @@
+/* ---------- Container ---------- */
 .login-signup-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80vh;
-    /* background: linear-gradient(120deg, #74ebd5, #9face6); */
-    overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  padding: 20px;
+  background: #f5f7fb;
+  font-family: "Inter", "Ubuntu", sans-serif;
 }
 
+/* ---------- Card ---------- */
 .form-container {
-    width: 30%;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: all 0.4s ease;
-    border-radius: 10px;
+  width: 100%;
+  max-width: 420px;
+  padding: 40px 30px;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .form-container.login-active,
 .form-container.signup-active {
-    transform: scale(1.05);
+  transform: scale(1.03);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.12);
 }
 
+/* ---------- Form Content ---------- */
 .form-content {
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
+  width: 100%;
+  text-align: center;
 }
 
 .form-content h1 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    color: inherit;
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: #1f2937;
 }
 
+/* ---------- Inputs ---------- */
 .form-content input {
-    width: 100%;
-    padding: 1rem;
-    margin: 0.5rem 0;
-    border: 1px solid #ddd;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  padding: 14px 16px;
+  margin: 0.6rem 0;
+  border: 1.5px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: border-color 0.25s, box-shadow 0.25s;
 }
 
-.form-content button {
-    width: 100%;
-    padding: 1rem;
-    margin-top: 1rem;
-    background-color: #007bff;
-    border: none;
-    border-radius: 0.5rem;
-    color: white;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
+.form-content input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+  outline: none;
 }
 
-.form-content button:hover {
-    background-color: #0056b3;
+/* ---------- Primary Button ---------- */
+.form-content button,
+.LoaderButton {
+  width: 100%;
+  padding: 14px;
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #2563eb, #4f8cff);
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
 }
 
+.form-content button:hover,
+.LoaderButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* Disabled state */
+button:disabled,
+.LoaderButton:disabled {
+  background: #cbd5e1;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* ---------- Links ---------- */
+.form-content p {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.form-content p a {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.25s;
+}
+
+.form-content p a:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+/* ---------- Toggle Button ---------- */
 .toggle-button {
-    margin-top: 1rem;
-    background: none;
-    border: 2px solid #007bff;
-    color: #007bff;
-    padding: 0.5rem 1.5rem;
-    border-radius: 2rem;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  margin-top: 1.5rem;
+  background: none;
+  border: 2px solid #2563eb;
+  color: #2563eb;
+  padding: 0.6rem 1.8rem;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .toggle-button:hover {
-    background-color: #007bff;
-    color: white;
+  background: #2563eb;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 480px) {
+  .form-container {
+    padding: 28px 20px;
+  }
+
+  .form-content h1 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
 }

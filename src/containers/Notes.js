@@ -84,6 +84,9 @@ export default function Notes() {
             <div className="note-view">
                 <div className="note-view-card">
                 <h1 className="note-title">{content.split("\n")[0]}</h1>
+                <p className="note-view-content">
+                    {content.split("\n").slice(1).join("\n")}
+                </p>
                     {note.attachmentURL && (
                         <img
                             src={note.attachmentURL}
@@ -115,11 +118,13 @@ export default function Notes() {
                     <Form.Label>Note Content</Form.Label>
                     <Form.Control
                         as="textarea"
-                        rows={3}
+                        rows={6}
+                        placeholder="Update your note..."
                         value={content}
                         onChange={(e) => setContent(e.target.value)}
                     />
                 </Form.Group>
+
                 <Form.Group controlId="file">
                     <Form.Label>Attachment</Form.Label>
                     {note.attachment && (
